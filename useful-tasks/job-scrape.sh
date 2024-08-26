@@ -7,7 +7,7 @@
 # @raycast.packageName Arc Browser
 #
 # Optional parameters:
-# @raycast.icon 🧭
+# @raycast.icon 💼
 #
 # Documentation:
 # @raycast.description This script sends the current URL to n8n to parse and add job details into chrome
@@ -18,7 +18,7 @@
 URL=$(osascript -e 'tell application "Arc" to get URL of active tab of first window')
 
 # Define the webhook URL and append the Arc URL as a query parameter
-WEBHOOK_URL="https://example.com/webhook/kjhaksfjha?parse=$URL"
+WEBHOOK_URL="https://n8n.cherdon.dev/webhook/3769744e-134a-4249-9e3b-385a7a3369ae?parse=$URL"
 
 # Send the URL to the webhook
 curl -X GET "$WEBHOOK_URL"
