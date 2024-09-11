@@ -17,8 +17,11 @@
 # Get the URL of the active tab in Arc Browser
 URL=$(osascript -e 'tell application "Arc" to get URL of active tab of first window')
 
+JOB_ID=$(echo "$URL" | grep -oE 'currentJobId=[^&]+' | cut -d '=' -f 2)
+JOB_URL="https://www.linkedin.com/jobs/view/$JOB_ID"
+
 # Define the webhook URL and append the Arc URL as a query parameter
-WEBHOOK_URL="https://n8n.cherdon.dev/webhook/3769744e-134a-4249-9e3b-385a7a3369ae?parse=$URL"
+WEBHOOK_URL="https://n8n.cherdon.dev/webhook/3769744e-134a-4249-9e3b-385a7a3369ae?parse=$JOB_URL"
 
 # Send the URL to the webhook
 curl -X GET "$WEBHOOK_URL"
